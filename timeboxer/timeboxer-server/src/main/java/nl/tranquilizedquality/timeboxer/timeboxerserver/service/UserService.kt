@@ -1,7 +1,9 @@
-package nl.tranquilizedquality.timeboxer.timeboxerserver.users
+package nl.tranquilizedquality.timeboxer.timeboxerserver.service
 
+import nl.tranquilizedquality.timeboxer.timeboxerserver.domain.User
+import nl.tranquilizedquality.timeboxer.timeboxerserver.domain.repository.UserRepository
 import org.springframework.stereotype.Component
-import java.util.*
+import java.util.Optional
 
 @Component
 class UserService(private val userRepository: UserRepository) {

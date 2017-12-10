@@ -1,4 +1,4 @@
-package nl.tranquilizedquality.timeboxer.timeboxerserver.users
+package nl.tranquilizedquality.timeboxer.timeboxerserver.domain
 import javax.persistence.Entity
 import javax.persistence.Id
 

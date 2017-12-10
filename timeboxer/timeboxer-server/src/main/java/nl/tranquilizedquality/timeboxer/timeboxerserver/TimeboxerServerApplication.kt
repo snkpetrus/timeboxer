@@ -1,7 +1,7 @@
 package nl.tranquilizedquality.timeboxer.timeboxerserver;
 
-import nl.tranquilizedquality.timeboxer.timeboxerserver.users.User
-import nl.tranquilizedquality.timeboxer.timeboxerserver.users.UserRepository
+import nl.tranquilizedquality.timeboxer.timeboxerserver.domain.User
+import nl.tranquilizedquality.timeboxer.timeboxerserver.domain.repository.UserRepository
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
