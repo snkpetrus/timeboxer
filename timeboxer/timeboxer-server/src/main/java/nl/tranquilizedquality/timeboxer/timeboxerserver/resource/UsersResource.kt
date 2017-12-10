@@ -1,6 +1,7 @@
 package nl.tranquilizedquality.timeboxer.timeboxerserver.resource
 
 import nl.tranquilizedquality.timeboxer.timeboxerserver.domain.User
+import nl.tranquilizedquality.timeboxer.timeboxerserver.resource.domain.JsonUser
 import nl.tranquilizedquality.timeboxer.timeboxerserver.service.UserService
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.GetMapping
@@ -16,32 +17,40 @@ import org.springframework.http.ResponseEntity
 
 @RestController
 @RequestMapping(value = "/users",
-        consumes = [(MediaType.APPLICATION_JSON_VALUE)],
-        produces = [(MediaType.APPLICATION_JSON_VALUE)])
+		consumes = [(MediaType.APPLICATION_JSON_VALUE)],
+		produces = [(MediaType.APPLICATION_JSON_VALUE)])
 class UsersResource(private val userService: UserService) {
-    companion object {
-        private val logger = LoggerFactory.getLogger(UsersResource::class.java)
-    }
+	companion object {
+		private val logger = LoggerFactory.getLogger(UsersResource::class.java)
+	}
 
-    @GetMapping(value = ["/{user_id}"])
-    fun getUser(@PathVariable(value = "user_id") userId: Long): ResponseEntity<User> {
-        logger.debug("Getting: $userId")
-        val user = userService.getUser(userId)
-        return when {
-            user.isPresent -> ResponseEntity(user.get(), HttpStatus.OK)
-            else -> ResponseEntity(HttpStatus.NOT_FOUND)
-        }
-    }
+	@GetMapping(value = "/{user_id}")
+	fun getUser(@PathVariable(value = "user_id") userId: Long): ResponseEntity<JsonUser>? {
+		
+		logger.debug("Getting: $userId")
+		var optionalUser = userService.getUser(userId)
+		
+		return when {
+			optionalUser.isPresent -> {
+				
+				var user = optionalUser.get()
+				var jsonUser = JsonUser(user.id, user.name, user.email)
+				return ResponseEntity(jsonUser, HttpStatus.OK)
+			}
+			else -> ResponseEntity(HttpStatus.NOT_FOUND)
+		}
 
-    @PostMapping
-    fun createUser(@RequestBody user: User) {
-        logger.debug("Creating: $user")
-        userService.createUser(user)
-    }
+	}
 
-    @PutMapping
-    fun updateUser(@RequestBody user: User) {
-        logger.debug("Updating: $user")
-        userService.updateUser(user)
-    }
+	@PostMapping
+	fun createUser(@RequestBody user: User) {
+		logger.debug("Creating: $user")
+		userService.createUser(user)
+	}
+
+	@PutMapping
+	fun updateUser(@RequestBody user: User) {
+		logger.debug("Updating: $user")
+		userService.updateUser(user)
+	}
 }
