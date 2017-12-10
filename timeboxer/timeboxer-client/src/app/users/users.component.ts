@@ -1,6 +1,6 @@
 import{Component, OnInit}from '@angular/core';
-import {User}from '../user.ts';
-import {USERS} from '../mock-users.ts';
+import {User}from '../user';
+import {USERS} from '../mock-users';
 
 @Component({
   selector: 'app-users',
