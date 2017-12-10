@@ -1,3 +1,6 @@
+# Exclude idea files
+.idea/
+
 *.class
 
 # Package Files #
