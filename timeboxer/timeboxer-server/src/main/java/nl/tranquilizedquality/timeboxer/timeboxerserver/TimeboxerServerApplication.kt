@@ -1,4 +1,4 @@
-package nl.tranquilizedquality.timeboxer.timeboxerserver;
+package nl.tranquilizedquality.timeboxer.timeboxerserver
 
 import nl.tranquilizedquality.timeboxer.timeboxerserver.domain.User
 import nl.tranquilizedquality.timeboxer.timeboxerserver.domain.repository.UserRepository

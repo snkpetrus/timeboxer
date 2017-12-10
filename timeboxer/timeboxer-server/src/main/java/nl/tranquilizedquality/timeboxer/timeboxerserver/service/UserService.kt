@@ -8,7 +8,7 @@ import java.util.Optional
 @Component
 class UserService(private val userRepository: UserRepository) {
 
-    fun getUser(userId: Long) : Optional<User>? {
+    fun getUser(userId: Long) : Optional<User> {
         return userRepository.findById(userId)
     }
 

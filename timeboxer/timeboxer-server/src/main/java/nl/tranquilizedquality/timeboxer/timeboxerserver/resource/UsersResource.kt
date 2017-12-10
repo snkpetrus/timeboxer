@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import java.util.Optional
+import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
+import org.springframework.http.ResponseEntity
 
 @RestController
 @RequestMapping(value = "/users",
@@ -22,10 +23,14 @@ class UsersResource(private val userService: UserService) {
         private val logger = LoggerFactory.getLogger(UsersResource::class.java)
     }
 
-    @GetMapping(value = "/{user_id}")
-    fun getUser(@PathVariable(value = "user_id") userId: Long): Optional<User>? {
+    @GetMapping(value = ["/{user_id}"])
+    fun getUser(@PathVariable(value = "user_id") userId: Long): ResponseEntity<User> {
         logger.debug("Getting: $userId")
-        return userService.getUser(userId)
+        val user = userService.getUser(userId)
+        return when {
+            user.isPresent -> ResponseEntity(user.get(), HttpStatus.OK)
+            else -> ResponseEntity(HttpStatus.NOT_FOUND)
+        }
     }
 
     @PostMapping
