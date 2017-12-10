@@ -1,18 +1,20 @@
 package nl.tranquilizedquality.timeboxer.timeboxerserver.users
 
 import org.springframework.stereotype.Component
+import java.util.*
 
 @Component
-class UserService {
-    fun getUser(userId: Long) : User {
-        throw UnsupportedOperationException("not not not yet!")
+class UserService(private val userRepository: UserRepository) {
+
+    fun getUser(userId: Long) : Optional<User>? {
+        return userRepository.findById(userId)
     }
 
     fun createUser(user: User) {
-        throw UnsupportedOperationException("not not not yet!")
+        userRepository.save(user)
     }
 
     fun updateUser(user: User) {
-        throw UnsupportedOperationException("not not not yet!")
+        userRepository.save(user)
     }
 }

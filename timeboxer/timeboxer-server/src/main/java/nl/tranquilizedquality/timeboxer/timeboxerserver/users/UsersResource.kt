@@ -3,6 +3,7 @@ package nl.tranquilizedquality.timeboxer.timeboxerserver.users
 import org.slf4j.LoggerFactory
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
+import java.util.*
 
 @RestController
 @RequestMapping(value = ["/users"],
@@ -14,7 +15,7 @@ class UsersResource(private val userService: UserService) {
     }
 
     @GetMapping(value = ["/{user_id}"])
-    fun getUser(@PathVariable(value = "user_id") userId: Long): User {
+    fun getUser(@PathVariable(value = "user_id") userId: Long): Optional<User>? {
         logger.debug("Getting: $userId")
         return userService.getUser(userId)
     }
