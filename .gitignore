@@ -4,3 +4,24 @@
 *.jar
 *.war
 *.ear
+
+# Intellij Idea #
+*/*.iml
+*.iml
+
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.xml
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/gradle.xml
+.idea/**/libraries
+.idea/**/mongoSettings.xml
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+.idea/
