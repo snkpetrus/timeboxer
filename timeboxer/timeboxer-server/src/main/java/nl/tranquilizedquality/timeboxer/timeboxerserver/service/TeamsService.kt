@@ -1,14 +1,14 @@
 package nl.tranquilizedquality.timeboxer.timeboxerserver.service
 
+import nl.tranquilizedquality.timeboxer.timeboxerserver.domain.Team
+import nl.tranquilizedquality.timeboxer.timeboxerserver.domain.repository.TeamRepository
 import org.springframework.stereotype.Component
+import java.util.*
 
 @Component
-class TeamsService {
-    fun getTeam(teamId: Long) {
-        throw UnsupportedOperationException("almost there, but not yet!")
-    }
+class TeamsService(private val teamRepository: TeamRepository) {
 
-    fun getUsersForTeam(teamId: Long) {
-        throw UnsupportedOperationException("almost there, but not yet!")
+    fun getTeam(teamId: Long): Optional<Team> {
+        return teamRepository.findById(teamId)
     }
 }

@@ -1,5 +1,11 @@
 package nl.tranquilizedquality.timeboxer.timeboxerserver.domain
 
-data class Team(val teamId: Long? = null,
+import javax.persistence.Entity
+import javax.persistence.FetchType
+import javax.persistence.Id
+import javax.persistence.ManyToMany
+
+@Entity
+data class Team(@Id val teamId: Long? = null,
                 val name: String? = null,
-                val users: List<User> = mutableListOf())
+                @ManyToMany(targetEntity = User::class, fetch = FetchType.EAGER) val users: List<User> = mutableListOf())
