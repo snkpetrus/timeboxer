@@ -18,6 +18,7 @@
   padding: .3em 0;
   height: 1.6em;
   border-radius: 4px;
+  text-align: left;
 }
 .users li.selected:hover {
   background-color: #BBD8DC !important;
