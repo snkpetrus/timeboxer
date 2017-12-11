@@ -1,4 +1,7 @@
 /* HeroesComponent's private CSS styles */
+* {
+    box-sizing: content-box;
+}
 .selected {
   background-color: #CFD8DC !important;
   color: white;
